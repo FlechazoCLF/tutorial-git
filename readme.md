@@ -615,8 +615,17 @@ git checkout -- 文件名
 # 撤销暂存区的修改
 git reset HEAD 文件名
 
-# 撤销提交
-git reset --soft HEAD^
+# 撤销提交记录保留工作目录中的修改内容
+git reset --mixed HEAD~1
+
+# 撤销提交保留修改并让它们处于“已暂存”状态
+git reset --soft HEAD~1
+
+# 完全删除提交以及对应的修改内容（不可逆 ）
+git reset --hard HEAD~1
+
+# 已推送到远程仓库的撤销 通过新增提交来撤销修改
+git revert HEAD
 ```
 
 ## 3. 存储修改 (git stash) 💾
