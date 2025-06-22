@@ -565,7 +565,22 @@ sequenceDiagram
     Note over User,Git: 此时用户还需 git commit 提交合并结果
 ```
 
-## 5. 推送操作 (git push, git pull, git fetch) 📤
+## 5. 推送操作 (git remote,git push, git pull, git fetch) 📤
+
+### 添加远程仓库
+
+```bash
+# 添加远程仓库
+git remote add origin https://gitee.com/carlchai/tutorial-git.git
+               起的名字                git仓库链接
+
+# 查看远程仓库
+git remote -v
+```
+
+可以查看一下(我这里添加了3个远程仓库)
+
+![](./images/wechat_2025-06-22_092427_864.png)
 
 ### 推送到远程
 ```bash
@@ -1097,6 +1112,34 @@ ping github.com
 ```bash
 git config --global http.proxy "127.0.0.1:端口号"
 git config --global https.proxy "127.0.0.1:端口号"
+```
+
+## 问题三：一个本地仓库对应多个远程仓库
+
+### 使用场景
+
+> [!CAUTION]
+>
+> 当你有一份本地仓库，但是想同时上传到多个平台时
+
+### 解决方案
+
+```bash
+# 添加远程仓库
+# 本地的Gitea
+git remote add origin http://localhost:3000/Flechazo/tutorial-git.git
+# Gitee
+git remote add gitee git@gitee.com:carlchai/tutorial-git.git
+# Github
+git remote add github https://github.com/FlechazoCLF/tutorial-git.git
+
+# 查看
+git remote -v
+
+# 推送(选择不同的仓库来推送)
+git push origin master
+git push gitee master
+git push github master
 ```
 
 # 🎉 彩蛋：一个有趣的快捷键管理工具
